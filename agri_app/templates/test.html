@@ -1,0 +1,46 @@
+ <!-- Start product section -->
+ <section class="product__section section--padding pt-0">
+    <div class="container">
+        <div class="section__heading text-center mb-25">
+            <span class="section__heading--subtitle">Recently added our store</span>
+            <h2 class="section__heading--maintitle">Trending Products</h2>
+        </div>
+        <ul class="product__tab--one product__tab--btn d-flex justify-content-center mb-35">
+            {% for category in data %}
+              <li class="product__tab--btn__list" data-toggle="tab" data-target="#product_{{ category.title|lower }}">{{ category.title }}</li>
+            {% endfor %}
+          </ul>
+        <!-- <ul class="product__tab--one product__tab--btn d-flex justify-content-center mb-35">
+            <li class="product__tab--btn__list active" data-toggle="tab" data-target="#product_all">All</li>
+            <li class="product__tab--btn__list" data-toggle="tab" data-target="#product_fresh">Fresh</li>
+            <li class="product__tab--btn__list" data-toggle="tab" data-target="#product_fruits">Fruits </li>
+            <li class="product__tab--btn__list" data-toggle="tab" data-target="#product_nature">Nature</li>
+            <li class="product__tab--btn__list" data-toggle="tab" data-target="#product_recipies">Recipies </li>
+            <li class="product__tab--btn__list" data-toggle="tab" data-target="#product_vegetable">Vegetable </li>
+        </ul> -->
+        <div class="tab_content">
+            <div id="product_{{ category.title|lower }}" class="tab_pane active show">
+                <div class="product__section--inner">
+                    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n28">
+                        {% for product in products %}
+                        <div class="col md-28">
+                            <div class="product__items ">
+                                <div class="product__items--thumbnail">
+                                    <a class="product__items--link" href="/product/{{product.slug}}/{{product.id}}">
+                                        <img class="product__items--img product__primary--img" src="{{product.image.url}}" width="250px"  height="250px" alt="product-img">
+                                        <img class="product__items--img product__secondary--img" src="{{product.image_two.url}}" width="250px"  height="250px" alt="product-img">
+                                    </a>
+                                    <div class="product__badge">
+                                        <span class="product__badge--items sale">{{product.label}}</span>
+                                    </div>
+                                    <ul class="product__items--action">
+                                        <li class="product__items--action__list">
+                                            
+                                            
+
+
+
+                                            {% for category in data %}
+          <div id="product_{{ category.id }}" class="tab_pane {% if forloop.first %}active show{% endif %}">
+            <div class="product__section--inner">
+              <div class="row row-cols-lg-4 row-cols-md-3 row-cols-2 mb--n28">
